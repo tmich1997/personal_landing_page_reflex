@@ -1,0 +1,15 @@
+diff a/reflex_cli/cli.py b/reflex_cli/cli.py	(rejected hunks)
+@@ -281,7 +281,12 @@ def deploy(
+     # Display the key events such as build, deploy, etc
+     # TODO: print logs based on event_id
+     server_report_deploy_success = hosting.poll_deploy_milestones(
+-        key, from_iso_timestamp=backend_deploy_requested_at
++        key,
++        from_iso_timestamp=backend_deploy_requested_at,
++        deploy_event_ids=[
++            backend_deploy_response.event_id,
++            frontend_deploy_response.event_id,
++        ],
+     )
+ 
+     if server_report_deploy_success is None:
